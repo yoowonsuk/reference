@@ -16,3 +16,9 @@ CircularQueue 배열기반큐
 ListBaseQueue 리스트기반큐
 DequeBaseQueue 덱 기반 큐
 Deque 덱
+
+이진트리 BinaryTree
+수식트리 ExpressionTree
+
+힙 UsefulHeap
+우선순위큐 PriorityQueue
