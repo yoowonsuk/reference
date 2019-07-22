@@ -12,8 +12,9 @@ BSTData BSTGetNodeData(BTreeNode * bst)
   return GetData(bst);
 }
 
-void BSTInsert(BTreeNode ** pRoot, BSTData data)
+BTreeNode * BSTInsert(BTreeNode ** pRoot, BSTData data)
 {
+  /*
   BTreeNode * pnode = NULL;
   BTreeNode * cnode = *pRoot;
   BTreeNode * nnode = MakeBTreeNode();
@@ -43,6 +44,26 @@ void BSTInsert(BTreeNode ** pRoot, BSTData data)
     *pRoot = nnode; // For Inserting into root node
 
   Rebalance(pRoot);
+  */
+
+  if(*pRoot == NULL)
+  {
+    *pRoot = MakeBTreeNode();
+    SetData(*pRoot, data);
+  }
+  else if(data < GetData(*pRoot))
+  {
+    BSTInsert(&((*pRoot)->left), data);
+    Rebalance(pRoot);
+  }
+  else if(data > GetData(*pRoot))
+  {
+    BSTInsert(&((*pRoot)->right), data);
+    Rebalance(pRoot);
+  }
+  else
+    return NULL;
+  return *pRoot;
 }
 
 BTreeNode * BSTSearch(BTreeNode * bst, BSTData target)
