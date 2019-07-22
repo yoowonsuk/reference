@@ -1,4 +1,4 @@
-#include "BinaryTree2.h"
+#include "BinaryTree.h"
 #include <stdlib.h>
 
 BTreeNode * MakeBTreeNode(void)
@@ -78,4 +78,39 @@ void DeleteTree(BTreeNode * bt)
   DeleteTree(bt->left);
   DeleteTree(bt->right);
   free(bt);
+}
+
+void ChangeRightSubTree(BTreeNode * main, BTreeNode * sub)
+{
+  main->right = sub;
+}
+
+void ChangeLeftSubTree(BTreeNode * main, BTreeNode * sub)
+{
+  main->left = sub;
+}
+
+BTreeNode * RemoveRightSubTree(BTreeNode * bt)
+{
+  BTreeNode * delnode = NULL;
+
+  if(bt)
+  {
+    delnode = bt->right;
+    bt->right = NULL;
+  }
+  return delnode;
+}
+
+BTreeNode * RemoveLeftSubTree(BTreeNode * bt)
+{
+  BTreeNode * delnode = NULL;
+
+  if(bt)
+  {
+    delnode = bt->left;
+    bt->left = NULL;
+  }
+
+  return delnode;
 }
